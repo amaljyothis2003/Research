@@ -2,29 +2,6 @@ from turtle import Turtle
 import math as mt
 import turtle
 
-t=Turtle()
-
-visited=[]
-
-screen = turtle.Screen()
-screen.setup(width=800, height=600)
-# screen.setworldcoordinates(-400, -300, 400, 300)
-t.pu()
-t.goto(-400,300)
-t.pd()
-t.forward(800)
-t.right(90)
-t.forward(600)
-t.right(90)
-t.forward(800)
-t.right(90)
-t.forward(600)
-t.right(90)
-
-t.left(60)
-t.speed(50)
-
-
 def draw_hexagon(size):
     for i in range(0,9):
         t.forward(size)
@@ -40,14 +17,43 @@ def honeycomb(x_size,y_size, length):
             t.goto(x+length,y)
             t.left(180)
         t.pu()
-        t.goto(-x_size,y_size-(mt.sqrt(3)*length))
-        y_size=y_size-(mt.sqrt(3)*length)
+        y=y-(mt.sqrt(3)*length)
+        t.goto(-x_size,y)
         t.pd()
 
+
+# Main Program
+
+t=Turtle()
+
+visited=[]
+
+screen = turtle.Screen()
+x=800
+y=600
+screen.setup(width=x, height=y)
+# screen.setworldcoordinates(-400, -300, 400, 300)
 t.pu()
-t.goto(-400+50,300+50)
+t.goto(-x/2,y/2)
 t.pd()
-honeycomb(400,300,50)
+t.forward(x)
+t.right(90)
+t.forward(y)
+t.right(90)
+t.forward(x)
+t.right(90)
+t.forward(y)
+t.right(90)
+
+t.left(60)
+t.speed(50)
+
+
+
+t.pu()
+t.goto(-(x/2),(y/2)-(mt.sqrt(3)*25))
+t.pd()
+honeycomb(x/2,y/2,50)
 
 print(visited)
 turtle.exitonclick()
